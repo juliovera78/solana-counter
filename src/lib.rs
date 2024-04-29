@@ -14,7 +14,7 @@ pub mod instructions;
 #[derive(Debug, BorshDeserialize, BorshSerialize)]
 pub struct CounterAccount {
     pub counter: u32,
-    //pub name: String,
+   // pub name: String,
 }
 
 entrypoint!(process_instruction);
@@ -39,6 +39,7 @@ pub fn process_instruction(
     let mut counter_account = CounterAccount::try_from_slice(&account.data.borrow())?;
 
     msg!("los programas solana no guardan los datos,tomo de otra cuenta los datos, CounterAccount desde la account.data.borrow :{} " , counter_account.counter);
+    //msg!("estoy extrayendo el name de CounterAccount desde la account.data.name :{} " , counter_account.name);
 
     match instruction {
         CounterInstructions::Increment(args) => {
